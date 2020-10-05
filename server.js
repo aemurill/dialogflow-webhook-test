@@ -29,5 +29,7 @@ app.post('/webhook', webhook)
 /***************/
 
 // The server is now listening on the port 8080
-app.listen(8080)
-console.log('info', `server listening on port 8080`)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => ***REMOVED***
+    console.log(`Our app is running on port $***REMOVED*** PORT }`);
+});

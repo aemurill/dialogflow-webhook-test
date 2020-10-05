@@ -6,7 +6,7 @@ let bodyParser = require('body-parser')
 
 /***** NEW *****/
 // Require the module webhook/index.js
-let webhook = require('./webhook/webhook')
+let webhook = require('./webhook')
 /***************/
 
 // These two following lines ensures that every incomming request

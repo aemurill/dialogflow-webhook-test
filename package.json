@@ -8,8 +8,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": ***REMOVED***
-    "firebase-admin": "^9.2.0",
-    "firebase-functions": "^3.11.0"
+    body-parser: "^1.17.2",
+    express: "^4.15.4"
   },
   "devDependencies": ***REMOVED***},
   "description": ""

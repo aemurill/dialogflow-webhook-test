@@ -8,8 +8,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": ***REMOVED***
-    body-parser: "^1.17.2",
-    express: "^4.15.4"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
   },
   "devDependencies": ***REMOVED***},
   "description": ""

@@ -15,7 +15,18 @@ const webhook = (req, res) => ***REMOVED***
   }*/
 
   // Sending back the results to the agent
-  res.json(***REMOVED***fulfillment_response: ***REMOVED***messages: [***REMOVED***message: "Hello"}], merge_behavior: APPEND}})
+  res.json(***REMOVED***
+    "fulfillment_response": ***REMOVED***
+      "messages": [***REMOVED***
+        "text": ***REMOVED***
+          "text": [
+            "text here"
+          ]
+        }
+      }],
+      "merge_behavior": "REPLACE"
+    }
+  });
 }
 
 module.exports = webhook

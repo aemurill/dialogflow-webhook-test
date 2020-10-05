@@ -1,34 +1,33 @@
-// See https://github.com/dialogflow/dialogflow-fulfillment-nodejs
-// for Dialogflow fulfillment library docs, samples, and to report issues
-'use strict';
+'use strict'
 
-const functions = require('firebase-functions');
+let express = require('express')
+let app = express()
+let bodyParser = require('body-parser')
 
-exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => ***REMOVED***
-  console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
-  console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
+/***** NEW *****/
+// Require the module webhook/index.js
+let webhook = require('./webhook')
+/***************/
 
-  /*function sendEmail(agent) ***REMOVED***
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    const ort = agent.parameters.ort;
+// These two following lines ensures that every incomming request
+// is parsed to json automatically
+app.use(bodyParser.urlencoded(***REMOVED*** extended: 'true' }))
+app.use(bodyParser.json())
 
-    const msg = ***REMOVED***
-      to: 'daniel.rommel@morgenstern.de',
-      from: 'danielrommel19@gmail.com',
-      subject: 'Just a quick note',
-      text: ort,
-      html: 'Just saying <strong>Hi from Dialogflow</strong>...',
-    };
-    console.log(msg);
-    sgMail.send(msg);
+// Allow access to resources from any origin and any headers. As we want
+// the agent to reach the webhook and not bother with CORS, they are fully
+// permissive
+app.use((req, res, next) => ***REMOVED***
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+})
 
-    agent.add(`What a beauty!`);
-  }
+/***** NEW *****/
+// Handle POST http requests on the /webhook endpoint
+app.post('/webhook', webhook)
+/***************/
 
-  // Run the proper function handler based on the matched Dialogflow intent name
-  let intentMap = new Map();
-  intentMap.set('Ticket erstellen - Geräusche - Art - Vorkommen - Ort', sendEmail);
-  // intentMap.set('your intent name here', yourFunctionHandler);
-  // intentMap.set('your intent name here', googleAssistantHandler);
-  agent.handleRequest(intentMap);*/
-});
+// The server is now listening on the port 8080
+app.listen(8080)
+console.log('info', `server listening on port 8080`)

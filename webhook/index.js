@@ -1,6 +1,6 @@
 'use strict'
 
-const webhook = (req, res) => ***REMOVED***
+const test = (req, res) => ***REMOVED***
   let body = req.body
 
   // Retrieving parameters from the request made by the agent
@@ -26,4 +26,7 @@ const webhook = (req, res) => ***REMOVED***
   });
 }
 
-module.exports = webhook
+module.exports = ***REMOVED***
+  test: test
+
+}

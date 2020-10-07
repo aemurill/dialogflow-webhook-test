@@ -1,5 +1,6 @@
 'use strict'
 
+
 const test = (req, res) => ***REMOVED***
   let body = req.body;
   console.log(body);
@@ -59,7 +60,7 @@ const login = (req, res) => ***REMOVED***
           "parameter_info": [
             ***REMOVED***
               "display_name": "valid",
-              "state": FILLED,
+              //"state": FILLED,
               "value": true,
             }
           ]

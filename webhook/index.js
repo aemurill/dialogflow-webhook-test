@@ -1,7 +1,8 @@
 'use strict'
 
 const test = (req, res) => ***REMOVED***
-  let body = req.body
+  let body = req.body;
+  console.log(body);
 
   // Retrieving parameters from the request made by the agent
   // Performing the action
@@ -12,18 +13,26 @@ const test = (req, res) => ***REMOVED***
   }*/
 
   // Sending back the results to the agent
-  res.json(***REMOVED***
-    "fulfillment_response": ***REMOVED***
-      "messages": [***REMOVED***
-        "text": ***REMOVED***
-          "text": [
-            "text here"
-          ]
+  res.json(
+    ***REMOVED***
+      "fulfillment_response": ***REMOVED***
+        "messages": [***REMOVED***
+          "text": ***REMOVED***
+            "text": [
+              "Login Successful"
+            ]
+          }
+        }],
+        "merge_behavior": "REPLACE"
+      },
+      "session_info": ***REMOVED***
+        "parameters": ***REMOVED***
+
         }
-      }],
-      "merge_behavior": "REPLACE"
+
+      }
     }
-  });
+  );
 }
 
 module.exports = ***REMOVED***

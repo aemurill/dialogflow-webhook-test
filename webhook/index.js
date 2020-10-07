@@ -14,19 +14,22 @@ const test = (req, res) => ***REMOVED***
   }*/
 
   // Sending back the results to the agent
-  res.json(
-    ***REMOVED***
-      "fulfillment_response": ***REMOVED***
-        "messages": [***REMOVED***
-          "text": ***REMOVED***
-            "text": [
-              "test"
-            ]
-          }
-        }],
-        "merge_behavior": "REPLACE"
-      }
+  json_msg = ***REMOVED***
+    "fulfillment_response": ***REMOVED***
+      "messages": [***REMOVED***
+        "text": ***REMOVED***
+          "text": [
+            "test"
+          ]
+        }
+      }],
+      "merge_behavior": "REPLACE"
     }
+  }
+  console.log("RES:")
+  console.log(json_msg)
+  res.json(
+    json_msg
   );
 };
 
@@ -43,35 +46,38 @@ const login = (req, res) => ***REMOVED***
   }*/
 
   // Sending back the results to the agent
-  res.json(
-    ***REMOVED***
-      "fulfillment_response": ***REMOVED***
-        "messages": [***REMOVED***
-          "text": ***REMOVED***
-            "text": [
-              "Login Successful"
-            ]
-          }
-        }],
-        "merge_behavior": "REPLACE"
-      },
-      "page_info":***REMOVED***
-        "form_info" : ***REMOVED***
-          "parameter_info": [
-            ***REMOVED***
-              "display_name": "valid",
-              "state": 3,
-              "value": true,
-            }
+  var json_msg = ***REMOVED***
+    "fulfillment_response": ***REMOVED***
+      "messages": [***REMOVED***
+        "text": ***REMOVED***
+          "text": [
+            "Login Successful"
           ]
         }
-      },
-      "session_info": ***REMOVED***
-        "parameters": ***REMOVED***
-          "loggedIn" : true
-        }
+      }],
+      "merge_behavior": "REPLACE"
+    },
+    "page_info":***REMOVED***
+      "form_info" : ***REMOVED***
+        "parameter_info": [
+          ***REMOVED***
+            "display_name": "valid",
+            "state": 3,
+            "value": true,
+          }
+        ]
+      }
+    },
+    "session_info": ***REMOVED***
+      "parameters": ***REMOVED***
+        "loggedIn" : true
       }
     }
+  }
+  console.log("RES:")
+  console.log(json_msg)
+  res.json(
+    json_msg
   );
 };
 

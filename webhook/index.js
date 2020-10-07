@@ -104,8 +104,10 @@ const login = (req, res) => ***REMOVED***
       }, 
       "session_info": ***REMOVED***
         "parameters": ***REMOVED***
-          "loggedIn" : false,
-          "valid" : false
+          "loggedIn" : true,
+          "valid" : true,
+          "email" : null,
+          "password" : null
         }
       }
     }

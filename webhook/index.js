@@ -83,7 +83,9 @@ const login = (req, res) => ***REMOVED***
       "session_info": ***REMOVED***
         "parameters": ***REMOVED***
           "loggedIn" : true,
-          "valid" : true
+          "valid" : true,
+          "email" : null,
+          "password" : null
         }
       }
     }

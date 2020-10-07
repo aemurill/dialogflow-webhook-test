@@ -37,15 +37,15 @@ const login = (req, res) => ***REMOVED***
   let req_body = req.body;
   console.log(req_body);
 
-  let req_session_info = null;
+  let req_sessionInfo = null;
   let req_parameters = null;
   let req_email = null;
   let req_password = null;
   let valid = false;
-  if (req_body.session_info != null)***REMOVED***
-    req_session_info = req_body.session_info;
-    if (req_session_info.parameters != null)***REMOVED***
-      req_parameters = req_session_info.parameters;
+  if (req_body.sessionInfo != null)***REMOVED***
+    req_sessionInfo = req_body.sessionInfo;
+    if (req_sessionInfo.parameters != null)***REMOVED***
+      req_parameters = req_sessionInfo.parameters;
       if (req_parameters.email != null && req_parameters.password != null)***REMOVED***
         req_email = req_parameters.email;
         req_password = req_parameters.password;

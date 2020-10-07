@@ -56,7 +56,10 @@ const login = (req, res) => ***REMOVED***
       },
       "session_info": ***REMOVED***
         "session" : body.sessionInfo.session,
-        "parameters": ***REMOVED***"loggedIn" : true}
+        "parameters": ***REMOVED***
+          "valid" : true,
+          "loggedIn" : true
+        }
       }
     }
   );

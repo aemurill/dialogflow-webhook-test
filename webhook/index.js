@@ -42,13 +42,13 @@ const login = (req, res) => ***REMOVED***
   let req_email = null;
   let req_password = null;
   let valid = false;
-  if (body.session_info != null)***REMOVED***
-    req_session_info = body.session_info;
+  if (req_body.session_info != null)***REMOVED***
+    req_session_info = req_body.session_info;
     if (req_session_info.parameters != null)***REMOVED***
       req_parameters = req_session_info.parameters;
       if (req_parameters.email != null && req_parameters.password != null)***REMOVED***
         req_email = req_parameters.email;
-        req_password = req_parameters.email;
+        req_password = req_parameters.password;
         if(req_email== "test@gmail.com" && req_password == "abc123") 
           valid = true; 
       }

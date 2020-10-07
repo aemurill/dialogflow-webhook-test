@@ -27,7 +27,7 @@ const test = (req, res) => ***REMOVED***
     }
   }
   console.log("RES:")
-  console.log(json_msg)
+  console.log(JSON.stringify(json_msg, null, 2));
   res.json(
     json_msg
   );
@@ -57,7 +57,7 @@ const login = (req, res) => ***REMOVED***
       }],
       "merge_behavior": "REPLACE"
     },
-    "page_info":***REMOVED***
+    /*"page_info":***REMOVED***
       "form_info" : ***REMOVED***
         "parameter_info": [
           ***REMOVED***
@@ -67,15 +67,16 @@ const login = (req, res) => ***REMOVED***
           }
         ]
       }
-    },
+    },*/
     "session_info": ***REMOVED***
       "parameters": ***REMOVED***
-        "loggedIn" : true
+        "loggedIn" : true,
+        "valid" : true
       }
     }
   }
   console.log("RES:")
-  console.log(json_msg)
+  console.log(JSON.stringify(json_msg, null, 2));
   res.json(
     json_msg
   );

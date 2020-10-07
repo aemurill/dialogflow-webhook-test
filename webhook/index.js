@@ -54,10 +54,19 @@ const login = (req, res) => ***REMOVED***
         }],
         "merge_behavior": "REPLACE"
       },
+      "page_info":***REMOVED***
+        "form_info" : ***REMOVED***
+          "parameter_info": [
+            ***REMOVED***
+              "display_name": "valid",
+              "state": FILLED,
+              "value": true,
+            }
+          ]
+        }
+      },
       "session_info": ***REMOVED***
-        "session" : body.sessionInfo.session,
         "parameters": ***REMOVED***
-          "valid" : true,
           "loggedIn" : true
         }
       }

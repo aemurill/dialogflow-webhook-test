@@ -63,7 +63,7 @@ const login = (req, res) => ***REMOVED***
         "messages": [***REMOVED***
           "text": ***REMOVED***
             "text": [
-              "Login Successful"
+              "Login Successful - Sending Data via session_info"
             ]
           }
         }],
@@ -90,16 +90,16 @@ const login = (req, res) => ***REMOVED***
   }
   else***REMOVED***
     json_msg = ***REMOVED***
-      /*"fulfillment_response": ***REMOVED***
+      "fulfillment_response": ***REMOVED***
         "messages": [***REMOVED***
           "text": ***REMOVED***
             "text": [
-              "Login Failed"
+              "Connected - Sending Data via session_info"
             ]
           }
         }],
         "merge_behavior": "REPLACE"
-      },*/ 
+      },
       "session_info": ***REMOVED***
         "parameters": ***REMOVED***
           "loggedIn" : false,

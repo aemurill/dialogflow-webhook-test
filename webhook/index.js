@@ -90,7 +90,7 @@ const login = (req, res) => ***REMOVED***
   }
   else***REMOVED***
     json_msg = ***REMOVED***
-      "fulfillment_response": ***REMOVED***
+      /*"fulfillment_response": ***REMOVED***
         "messages": [***REMOVED***
           "text": ***REMOVED***
             "text": [
@@ -99,7 +99,7 @@ const login = (req, res) => ***REMOVED***
           }
         }],
         "merge_behavior": "REPLACE"
-      }, 
+      },*/ 
       "session_info": ***REMOVED***
         "parameters": ***REMOVED***
           "loggedIn" : false,

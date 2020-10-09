@@ -264,7 +264,7 @@ const getRandAnimal = async(req, res) => ***REMOVED***
   var json_msg = ***REMOVED***
     "fulfillment_response": ***REMOVED***
       "messages": [],
-      "merge_behavior": "REPLACE"
+      "merge_behavior": "MERGE"
     }
   }
 

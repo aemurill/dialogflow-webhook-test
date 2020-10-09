@@ -1,5 +1,58 @@
 'use strict'
 
+const ***REMOVED*** http, https } = require('follow-redirects');
+
+function httpRequest(params, postData)***REMOVED***
+  return new Promise(function(resolve, reject)***REMOVED***
+    console.log('promis')
+    var req = http.request(params, function(res)***REMOVED***
+      /*if (res.statusCode < 200 || res.statusCode >= 300) ***REMOVED***
+        return reject(new Error('statusCode=' + res.statusCode));
+      }*/
+      var body = [];
+      res.on('data', function(chunk) ***REMOVED***
+        console.log('push')
+          body.push(chunk);
+      });
+      res.on('error', function(err) ***REMOVED***
+        console.log('reqerr')
+        // This is not a "Second reject", just a different sort of failure
+        reject(err);
+      });
+      res.on('end', function() ***REMOVED***
+        console.log('end')
+        try ***REMOVED***
+            body = Buffer.concat(body).toString();
+        } catch(e) ***REMOVED***
+            console.log("error1")
+            reject(e);
+        }
+        resolve(body);
+      });
+    });
+    req.on('error', function(err) ***REMOVED***
+      console.log('push')
+      // This is not a "Second reject", just a different sort of failure
+      reject(err);
+    });
+    req.on('timeout', function(err) ***REMOVED***
+      console.log('push')
+      // This is not a "Second reject", just a different sort of failure
+      reject(err);
+    });
+    req.on('uncaughtException', function(err) ***REMOVED***
+      console.log('push')
+      // This is not a "Second reject", just a different sort of failure
+      reject(err);
+    });
+    if (postData) ***REMOVED***
+        console.log('post')
+        req.write(postData);
+    }
+    // IMPORTANT
+    req.end();
+  })
+}
 
 const test = (req, res) => ***REMOVED***
   let body = req.body;
@@ -115,7 +168,131 @@ const login = (req, res) => ***REMOVED***
   );
 };
 
+/*function getRandAnimal3(api_res, res)***REMOVED***
+  console.log("POST API CALL FOR ANIMAL");
+  console.log(api_res);
+  var obj = JSON.parse(api_res);
+  
+
+  var json_msg = null;
+
+  json_msg = ***REMOVED***
+    "fulfillment_response": ***REMOVED***
+      "messages": [***REMOVED***
+        "text": ***REMOVED***
+          "text": [
+            "Connected - Sending Data via session_info"
+          ]
+        }
+      }],
+      "merge_behavior": "REPLACE"
+    },
+    "session_info": ***REMOVED***
+      "parameters": ***REMOVED***
+        "loggedIn" : false,
+        "valid" : true,
+      }
+    }
+  }
+
+  console.log("RES:")
+  console.log(JSON.stringify(json_msg, null, 2));
+  res.json(
+    json_msg
+  );
+}
+
+}*/
+
+const getRandAnimal = async(req, res) => ***REMOVED***
+  let req_body = req.body;
+  console.log(req_body);
+
+  /*curl -d "grant_type=client_credentials&client_id=vuQeLWIlk4iwUP1Rj8BOxSTlLuSKy5YoHU1qfg7JaHKfJ3MWcl&client_secret=PyUZvJyYEAeCAgxpLMf68LllD42d6XjoHVcKkJ3o" https://api.petfinder.com/v2/oauth2/token*/  
+
+  var post_data = "grant_type=client_credentials&client_id=vuQeLWIlk4iwUP1Rj8BOxSTlLuSKy5YoHU1qfg7JaHKfJ3MWcl&client_secret=PyUZvJyYEAeCAgxpLMf68LllD42d6XjoHVcKkJ3o";
+  var post_request_options = ***REMOVED***
+    host: "api.petfinder.com",
+    port: '80',
+    path: "/v2/oauth2/token",
+    method: "POST",
+    headers: ***REMOVED***
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': Buffer.byteLength(post_data)
+    }
+  }
+
+  var access_token;
+  var body = await httpRequest(post_request_options, post_data).catch((error) => ***REMOVED***console.error(error)})
+  
+  console.log(body);
+  var obj = JSON.parse(body);
+  access_token = obj.access_token;
+  post_request_options.path = "/v2/animals"
+  post_request_options.headers = ***REMOVED***};
+  post_request_options.headers.Authorization = "Bearer ".concat(access_token);
+  console.log(post_request_options.headers.Authorization)
+  post_request_options.method = "GET";
+   
+  body = await httpRequest(post_request_options).catch((error) => ***REMOVED***console.error(error)})
+  console.log(body);
+
+  obj = JSON.parse(body)
+  var animals = [];
+  var i = 0;
+  for(var animal of obj.animals)***REMOVED***
+    const a_name = animal.name;
+    const a_species = animal.species;
+    const a_gender = animal.gender;
+    const a_age = animal.age;
+    const a_url = animal.url;
+    animals[i] = ***REMOVED***
+      "title": a_name.concat(" the ").concat(a_age).concat(" ").concat(a_gender).concat(" ").concat(a_species),
+      "url": a_url
+    }
+    i++;
+  }
+
+  /****REMOVED***
+      "text": ***REMOVED***
+        "text": [
+          "Connected - Sending Data via session_info"
+        ]
+      }
+    } */
+
+  var json_msg = ***REMOVED***
+    "fulfillment_response": ***REMOVED***
+      "messages": [],
+      "merge_behavior": "REPLACE"
+    }
+  }
+
+  var i = 0
+  for (var animal of animals)***REMOVED***
+    json_msg.fulfillment_response.messages[i] = ***REMOVED***
+      "text": ***REMOVED***
+        "text": [
+          animals[i].title,
+          animals[i].url
+        ]
+      }
+    }
+    i++;
+  }
+
+  console.log("RES:")
+  console.log(JSON.stringify(json_msg, null, 2));
+  res.json(
+    json_msg
+  );
+
+};
+
+
+
 module.exports = ***REMOVED***
   test: test,
-  login: login
+  login: login,
+  randAnimal: getRandAnimal
 };

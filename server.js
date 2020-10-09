@@ -25,8 +25,9 @@ app.use((req, res, next) => ***REMOVED***
 
 /***** NEW *****/
 // Handle POST http requests on the /webhook endpoint
-app.post('/webhook', webhook.test)
-app.post('/login', webhook.login)
+app.post('/webhook', webhook.test);
+app.post('/login', webhook.login);
+app.post('/randAnimal', webhook.randAnimal);
 /***************/
 
 // The server is now listening on the port 8080

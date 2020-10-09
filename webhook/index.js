@@ -204,7 +204,7 @@ const login = (req, res) => ***REMOVED***
 
 }*/
 
-const getRandAnimal = async(req, res) => ***REMOVED***
+const getAnimals = async(req, res) => ***REMOVED***
   let req_body = req.body;
   console.log(req_body);
 
@@ -246,8 +246,96 @@ const getRandAnimal = async(req, res) => ***REMOVED***
     const a_gender = animal.gender;
     const a_age = animal.age;
     const a_url = animal.url;
+    const ID = animal.id;
     animals[i] = ***REMOVED***
-      "title": a_name.concat(" the ").concat(a_age).concat(" ").concat(a_gender).concat(" ").concat(a_species),
+      "title": a_name.concat(" the ").concat(a_age).concat(" ").concat(a_gender).concat(" ").concat(a_species).concat("     ").concat(ID),
+      "url": a_url
+    }
+    i++;
+  }
+
+  /****REMOVED***
+      "text": ***REMOVED***
+        "text": [
+          "Connected - Sending Data via session_info"
+        ]
+      }
+    } */
+
+  var json_msg = ***REMOVED***
+    "fulfillment_response": ***REMOVED***
+      "messages": [],
+      "merge_behavior": "MERGE"
+    }
+  }
+
+  var i = 0
+  for (var animal of animals)***REMOVED***
+    json_msg.fulfillment_response.messages[i] = ***REMOVED***
+      "text": ***REMOVED***
+        "text": [
+          animals[i].title,
+          animals[i].url
+        ]
+      }
+    }
+    i++;
+  }
+
+  console.log("RES:")
+  console.log(JSON.stringify(json_msg, null, 2));
+  res.json(
+    json_msg
+  );
+
+};
+
+const getAnimal = async(req, res) => ***REMOVED***
+  let req_body = req.body;
+  var target = req.sessionInfo.parameters.animal_id;
+  console.log(req_body);
+
+  /*curl -d "grant_type=client_credentials&client_id=vuQeLWIlk4iwUP1Rj8BOxSTlLuSKy5YoHU1qfg7JaHKfJ3MWcl&client_secret=PyUZvJyYEAeCAgxpLMf68LllD42d6XjoHVcKkJ3o" https://api.petfinder.com/v2/oauth2/token*/  
+
+  var post_data = "grant_type=client_credentials&client_id=vuQeLWIlk4iwUP1Rj8BOxSTlLuSKy5YoHU1qfg7JaHKfJ3MWcl&client_secret=PyUZvJyYEAeCAgxpLMf68LllD42d6XjoHVcKkJ3o";
+  var post_request_options = ***REMOVED***
+    host: "api.petfinder.com",
+    port: '80',
+    path: "/v2/oauth2/token",
+    method: "POST",
+    headers: ***REMOVED***
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': Buffer.byteLength(post_data)
+    }
+  }
+
+  var access_token;
+  var body = await httpRequest(post_request_options, post_data).catch((error) => ***REMOVED***console.error(error)})
+  
+  console.log(body);
+  var obj = JSON.parse(body);
+  access_token = obj.access_token;
+  post_request_options.path = "/v2/animals/".concat(target);
+  post_request_options.headers = ***REMOVED***};
+  post_request_options.headers.Authorization = "Bearer ".concat(access_token);
+  console.log(post_request_options.headers.Authorization)
+  post_request_options.method = "GET";
+   
+  body = await httpRequest(post_request_options).catch((error) => ***REMOVED***console.error(error)})
+  console.log(body);
+
+  obj = JSON.parse(body)
+  var animals = [];
+  var i = 0;
+  for(var animal of obj.animals)***REMOVED***
+    const a_name = animal.name;
+    const a_species = animal.species;
+    const a_gender = animal.gender;
+    const a_age = animal.age;
+    const a_url = animal.url;
+    const ID = animal.id;
+    animals[i] = ***REMOVED***
+      "title": a_name.concat(" the ").concat(a_age).concat(" ").concat(a_gender).concat(" ").concat(a_species).concat("     ").concat(ID),
       "url": a_url
     }
     i++;
@@ -294,5 +382,6 @@ const getRandAnimal = async(req, res) => ***REMOVED***
 module.exports = ***REMOVED***
   test: test,
   login: login,
-  randAnimal: getRandAnimal
+  listAnimals: getAnimals,
+  getAnimal: getAnimal
 };

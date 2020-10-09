@@ -292,8 +292,9 @@ const getAnimals = async(req, res) => ***REMOVED***
 
 const getAnimal = async(req, res) => ***REMOVED***
   let req_body = req.body;
-  var target = req.sessionInfo.parameters.animal_id;
   console.log(req_body);
+  var target = req.sessionInfo.parameters.animal_id;
+  
 
   /*curl -d "grant_type=client_credentials&client_id=vuQeLWIlk4iwUP1Rj8BOxSTlLuSKy5YoHU1qfg7JaHKfJ3MWcl&client_secret=PyUZvJyYEAeCAgxpLMf68LllD42d6XjoHVcKkJ3o" https://api.petfinder.com/v2/oauth2/token*/  
 
@@ -352,7 +353,7 @@ const getAnimal = async(req, res) => ***REMOVED***
   var json_msg = ***REMOVED***
     "fulfillment_response": ***REMOVED***
       "messages": [],
-      "merge_behavior": "MERGE"
+      "merge_behavior": "REPLACE"
     }
   }
 

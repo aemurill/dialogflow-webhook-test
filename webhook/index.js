@@ -245,11 +245,9 @@ const getAnimals = async(req, res) => ***REMOVED***
     const a_species = animal.species;
     const a_gender = animal.gender;
     const a_age = animal.age;
-    const a_url = animal.url;
     const ID = animal.id;
     animals[i] = ***REMOVED***
-      "title": a_name.concat(" the ").concat(a_age).concat(" ").concat(a_gender).concat(" ").concat(a_species).concat("     ").concat(ID),
-      "url": a_url
+      "title": a_name.concat(" the ").concat(a_age).concat(" ").concat(a_gender).concat(" ").concat(a_species).concat("     ").concat(ID)
     }
     i++;
   }
@@ -274,8 +272,7 @@ const getAnimals = async(req, res) => ***REMOVED***
     json_msg.fulfillment_response.messages[i] = ***REMOVED***
       "text": ***REMOVED***
         "text": [
-          animals[i].title,
-          animals[i].url
+          animals[i].title
         ]
       }
     }
@@ -326,21 +323,22 @@ const getAnimal = async(req, res) => ***REMOVED***
   console.log(body);
 
   obj = JSON.parse(body)
-  var animals = [];
-  var i = 0;
-  for(var animal of obj.animals)***REMOVED***
-    const a_name = animal.name;
-    const a_species = animal.species;
-    const a_gender = animal.gender;
-    const a_age = animal.age;
-    const a_url = animal.url;
-    const ID = animal.id;
-    animals[i] = ***REMOVED***
+  //var animals = [];
+  //var i = 0;
+  //for(var animal of obj.animals)***REMOVED***
+  var animal = obj.animal;
+  const a_name = animal.name;
+  const a_species = animal.species;
+  const a_gender = animal.gender;
+  const a_age = animal.age;
+  const a_url = animal.url;
+  const ID = animal.id;
+  var msg_animal = ***REMOVED***
       "title": a_name.concat(" the ").concat(a_age).concat(" ").concat(a_gender).concat(" ").concat(a_species).concat("     ").concat(ID),
       "url": a_url
-    }
-    i++;
   }
+    //i++;
+  //}
 
   /****REMOVED***
       "text": ***REMOVED***
@@ -357,18 +355,22 @@ const getAnimal = async(req, res) => ***REMOVED***
     }
   }
 
-  var i = 0
-  for (var animal of animals)***REMOVED***
-    json_msg.fulfillment_response.messages[i] = ***REMOVED***
+  json_msg.fulfillment_response.messages = [
+    ***REMOVED***
       "text": ***REMOVED***
         "text": [
-          animals[i].title,
-          animals[i].url
+          msg_animal.title
+        ]
+      }
+    },
+    ***REMOVED***
+      "text": ***REMOVED***
+        "text": [
+          msg_animal.url
         ]
       }
     }
-    i++;
-  }
+  ]
 
   console.log("RES:")
   console.log(JSON.stringify(json_msg, null, 2));

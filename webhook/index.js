@@ -383,11 +383,7 @@ const getAnimal = async(req, res) => ***REMOVED***
 
 const transition = async(req, res) => ***REMOVED***
   let req_body = req.body;
-  console.log(req_body);
-  var target = req_body.sessionInfo.parameters.animal_id;
-  
-
-  
+  console.log(req_body);  
 
   var json_msg = ***REMOVED***
     "fulfillment_response": ***REMOVED***

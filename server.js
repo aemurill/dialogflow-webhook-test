@@ -29,6 +29,7 @@ app.post('/webhook', webhook.test);
 app.post('/login', webhook.login);
 app.post('/listAnimals', webhook.listAnimals);
 app.post('/getAnimal', webhook.getAnimal);
+app.post('/transition', webhook.transition);
 /***************/
 
 // The server is now listening on the port 8080

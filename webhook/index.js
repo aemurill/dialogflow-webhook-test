@@ -381,10 +381,46 @@ const getAnimal = async(req, res) => ***REMOVED***
 };
 
 
+const transition = async(req, res) => ***REMOVED***
+  let req_body = req.body;
+  console.log(req_body);
+  var target = req_body.sessionInfo.parameters.animal_id;
+  
+
+  
+
+  var json_msg = ***REMOVED***
+    "fulfillment_response": ***REMOVED***
+      "messages": [],
+      "merge_behavior": "REPLACE"
+    },
+    "target_page": "projects/dialogflow-support-team-cx/locations/global/agents/c6952e13-2ab2-4e5a-a4f5-d20d55874238/flows/00000000-0000-0000-0000-000000000000/pages/c62f42c6-a127-4c7b-a292-4b775c8a4a4a"
+  }
+
+  json_msg.fulfillment_response.messages = [
+    ***REMOVED***
+      "text": ***REMOVED***
+        "text": [
+          "Transitioning..."
+        ]
+      }
+    }
+  ]
+
+  console.log("RES:")
+  console.log(JSON.stringify(json_msg, null, 2));
+  res.json(
+    json_msg
+  );
+
+};
+
+
 
 module.exports = ***REMOVED***
   test: test,
   login: login,
   listAnimals: getAnimals,
-  getAnimal: getAnimal
+  getAnimal: getAnimal,
+  transition: transition
 };

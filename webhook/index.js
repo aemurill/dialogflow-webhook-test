@@ -247,7 +247,7 @@ const getAnimals = async(req, res) => ***REMOVED***
     const a_age = animal.age;
     const ID = animal.id;
     animals[i] = ***REMOVED***
-      "title": a_name.concat(" the ").concat(a_age).concat(" ").concat(a_gender).concat(" ").concat(a_species).concat("     ").concat(ID)
+      "title": "[".concat(a_name).concat(" the ").concat(a_age).concat(" ").concat(a_gender).concat(" ").concat(a_species).concat("     ").concat(ID).concat("]")
     }
     i++;
   }

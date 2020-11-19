@@ -67,16 +67,12 @@ const test = (req, res) => ***REMOVED***
   }*/
 
   // Sending back the results to the agent
-  json_msg = ***REMOVED***
-    "fulfillment_response": ***REMOVED***
-      "messages": [***REMOVED***
-        "text": ***REMOVED***
-          "text": [
-            "test"
-          ]
-        }
-      }],
-      "merge_behavior": "REPLACE"
+  let json_msg = ***REMOVED***
+    "session_info": ***REMOVED***
+      "parameters": ***REMOVED***
+        "loggedIn" : true,
+        "valid" : true,
+      }
     }
   }
   console.log("RES:")

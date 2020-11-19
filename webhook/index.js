@@ -70,8 +70,7 @@ const test = (req, res) => ***REMOVED***
   let json_msg = ***REMOVED***
     "session_info": ***REMOVED***
       "parameters": ***REMOVED***
-        "loggedIn" : true,
-        "valid" : true,
+        "city" : "New York"
       }
     }
   }

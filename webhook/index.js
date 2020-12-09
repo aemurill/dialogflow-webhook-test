@@ -72,7 +72,7 @@ const test = (req, res) => ***REMOVED***
       "messages": [
         ***REMOVED*** 
           "play_audio": ***REMOVED*** 
-            "audio_uri": "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"
+            "audio_uri": "https://bigsoundbank.com/UPLOAD/wav/0003.wav"
           } 
         }
       ] 

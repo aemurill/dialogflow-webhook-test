@@ -67,13 +67,37 @@ const test = (req, res) => ***REMOVED***
   }*/
 
   // Sending back the results to the agent
-  let json_msg = ***REMOVED***
-    "session_info": ***REMOVED***
-      "parameters": ***REMOVED***
-        "city" : "New York"
-      }
-    }
+  let json_msg = ***REMOVED*** 
+    "fulfillment_response": ***REMOVED*** 
+      "messages": [
+        ***REMOVED*** 
+          "play_audio": ***REMOVED*** 
+            "audio_uri": `https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg`, 
+            "allow_playback_interruption": 1
+          } 
+        },
+        ***REMOVED*** 
+          "mixed_audio": ***REMOVED*** 
+            "segments":[
+              ***REMOVED***  
+                "uri": `https://actions.google.com/sounds/v1/alarms/beep_short.ogg`, 
+                "allow_playback_interruption": 1
+              },
+              ***REMOVED***  
+                "uri": `https://actions.google.com/sounds/v1/alarms/beep_short.ogg`, 
+                "allow_playback_interruption": 1
+              },
+              ***REMOVED***  
+                "uri": `https://actions.google.com/sounds/v1/alarms/beep_short.ogg`, 
+                "allow_playback_interruption": 1
+              }
+            ]
+          } 
+        }
+      ] 
+    } 
   }
+
   console.log("RES:")
   console.log(JSON.stringify(json_msg, null, 2));
   res.json(

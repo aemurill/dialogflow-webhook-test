@@ -75,24 +75,6 @@ const test = (req, res) => ***REMOVED***
             "audio_uri": `https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg`, 
             "allow_playback_interruption": 1
           } 
-        },
-        ***REMOVED*** 
-          "mixed_audio": ***REMOVED*** 
-            "segments":[
-              ***REMOVED***  
-                "uri": `https://actions.google.com/sounds/v1/alarms/beep_short.ogg`, 
-                "allow_playback_interruption": 1
-              },
-              ***REMOVED***  
-                "uri": `https://actions.google.com/sounds/v1/alarms/beep_short.ogg`, 
-                "allow_playback_interruption": 1
-              },
-              ***REMOVED***  
-                "uri": `https://actions.google.com/sounds/v1/alarms/beep_short.ogg`, 
-                "allow_playback_interruption": 1
-              }
-            ]
-          } 
         }
       ] 
     } 

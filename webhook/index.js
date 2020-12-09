@@ -72,8 +72,7 @@ const test = (req, res) => ***REMOVED***
       "messages": [
         ***REMOVED*** 
           "play_audio": ***REMOVED*** 
-            "audio_uri": `https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg`, 
-            "allow_playback_interruption": 1
+            "audio_uri": `https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg`
           } 
         }
       ] 

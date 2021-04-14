@@ -136,7 +136,8 @@ const test = (req, res) => {
       // Check the availability of the time, and make an appointment if there is time on the calendar
     return createCalendarEvent(dateTimeStart, dateTimeEnd, appointment_type).then(() => {
       agent.add(`Ok, let me see if we can fit you in. ${appointmentTimeString} is fine!.`);
-    }).catch(() => {
+    }).catch(err => {
+      console.log('ERR:'+err);
       agent.add(`I'm sorry, there are no slots available for ${appointmentTimeString}.`);
     });
   }

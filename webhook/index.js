@@ -62,8 +62,8 @@ const test = (req, res) => {
   const {WebhookClient} = require('dialogflow-fulfillment');
 
   // Enter your calendar ID below and service account JSON below
-  const calendarId = process.env.CAL_ID_1;
-  const calendarId2 = process.env.CAL_ID_2;
+  var calendarId = process.env.CAL_ID_1;
+  var calendarId2 = process.env.CAL_ID_2;
   const serviceAccount = {
     "type": "service_account",
     "project_id": process.env.PROJ_ID,

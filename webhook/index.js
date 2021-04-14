@@ -64,18 +64,7 @@ const test = (req, res) => {
   // Enter your calendar ID below and service account JSON below
   var calendarId = process.env.CAL_ID_1;
   var calendarId2 = process.env.CAL_ID_2;
-  const serviceAccount = {
-    "type": "service_account",
-    "project_id": process.env.PROJ_ID,
-    "private_key_id": process.env.PRIV_KEY_ID,
-    "private_key": process.env.PRIV_KEY_BLOB,
-    "client_email": process.env.CLIENT_EMAIL,
-    "client_id": process.env.CLIENT_ID,
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": process.env.CERT_URL
-  }; // Starts with {"type": "service_account",...
+  const serviceAccount = process.env.GOOGLE_CREDENTIALS; // Starts with {"type": "service_account",...
 
   // Set up Google Calendar Service account credentials
   const serviceAccountAuth = new google.auth.JWT({

@@ -82,7 +82,7 @@ const test = (req, res) => {
   //Creates calendar event in Google Calendar
   function createCalendarEvent (dateTimeStart, dateTimeEnd, appointment_type) {
     if (Math.random() > 0.5) calendarId = calendarId2;
-      serviceAccount.authorize(function (err, tokens) {
+      serviceAccountAuth.authorize(function (err, tokens) {
       if (err) {
           console.log(err);
           return;

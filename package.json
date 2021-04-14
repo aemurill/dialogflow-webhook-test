@@ -1,17 +1,17 @@
-***REMOVED***
+{
   "name": "df_express",
   "version": "1.0.0",
   "main": "server.js",
-  "scripts": ***REMOVED***
+  "scripts": {
     "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": ***REMOVED***
+  "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "follow-redirects": "^1.13.0"
   },
-  "devDependencies": ***REMOVED***},
+  "devDependencies": {},
   "description": ""
 }

@@ -9,5 +9,5 @@ let bodyParser = require('body-parser')
 let webhook = require('./webhook')
 /***************/
 
-var req = ***REMOVED***"body": "hi"}
+var req = {"body": "hi"}
 webhook.randAnimal(req);

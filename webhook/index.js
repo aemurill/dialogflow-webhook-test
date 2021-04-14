@@ -82,30 +82,42 @@ const test = (req, res) => {
   //Creates calendar event in Google Calendar
   function createCalendarEvent (dateTimeStart, dateTimeEnd, appointment_type) {
     if (Math.random() > 0.5) calendarId = calendarId2;
-    return new Promise((resolve, reject) => {
-      calendar.events.list({
-        auth: serviceAccountAuth, // List events for time period
-        calendarId: calendarId,
-        timeMin: dateTimeStart.toISOString(),
-        timeMax: dateTimeEnd.toISOString()
-      }, (err, calendarResponse) => {
-        // Check if there is a event already on the Calendar
-        if (err || calendarResponse.data.items.length > 0) {
-          reject(err || new Error('Requested time conflicts with another appointment'));
-        } else {
-          // Create event for the requested time period
-          calendar.events.insert({ auth: serviceAccountAuth,
-            calendarId: calendarId,
-            resource: {summary: appointment_type +' Appointment', description: appointment_type,
-              start: {dateTime: dateTimeStart},
-              end: {dateTime: dateTimeEnd}}
-          }, (err, event) => {
-            err ? reject(err) : resolve(event);
-          }
-          );
-        }
-      });
+    jwtClient.authorize(function (err, tokens) {
+      if (err) {
+          console.log(err);
+          return;
+      } else {
+          console.log(tokens);
+  
+          
+          console.log("Successfully connected!");
+          return new Promise((resolve, reject) => {
+            calendar.events.list({
+              auth: serviceAccountAuth, // List events for time period
+              calendarId: calendarId,
+              timeMin: dateTimeStart.toISOString(),
+              timeMax: dateTimeEnd.toISOString()
+            }, (err, calendarResponse) => {
+              // Check if there is a event already on the Calendar
+              if (err || calendarResponse.data.items.length > 0) {
+                reject(err || new Error('Requested time conflicts with another appointment'));
+              } else {
+                // Create event for the requested time period
+                calendar.events.insert({ auth: serviceAccountAuth,
+                  calendarId: calendarId,
+                  resource: {summary: appointment_type +' Appointment', description: appointment_type,
+                    start: {dateTime: dateTimeStart},
+                    end: {dateTime: dateTimeEnd}}
+                }, (err, event) => {
+                  err ? reject(err) : resolve(event);
+                }
+                );
+              }
+            });
+          });
+      }
     });
+    
   }
 
   // Set the DialogflowApp object to handle the HTTPS POST request.

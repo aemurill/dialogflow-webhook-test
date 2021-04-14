@@ -120,10 +120,9 @@ const test = (req, res) => {
   }
 
   // Set the DialogflowApp object to handle the HTTPS POST request.
-  const options = { request: req, result: res }
-  console.log(options.request);
-  
-  const agent = new WebhookClient({ request: req, result: res });
+
+
+  const agent = new WebhookClient({ request: req, response: res });
   console.log("Parameters", agent.parameters);
   const appointment_type = agent.parameters.AppointmentType;
   function makeAppointment (agent) {

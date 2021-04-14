@@ -65,6 +65,7 @@ const test = (req, res) => {
   var calendarId = process.env.CAL_ID_1;
   var calendarId2 = process.env.CAL_ID_2;
   const serviceAccount = process.env.GOOGLE_CREDENTIALS; // Starts with {"type": "service_account",...
+  console.log(serviceAccount);
 
   // Set up Google Calendar Service account credentials
   const serviceAccountAuth = new google.auth.JWT({
